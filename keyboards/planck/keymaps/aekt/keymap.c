@@ -41,8 +41,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_SYMBOL] = LAYOUT_planck_mit(
     KC_TILD , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , KC_DEL  ,
-    _______ , KC_EXLM , KC_AT   , KC_LPRN , KC_RPRN , KC_PERC , KC_CIRC , KC_LCBR , KC_RCBR , KC_LBRC , KC_RBRC , KC_GRV  ,
-    _______ , KC_UNDS , KC_EQL  , KC_HASH , KC_DLR  , _______ , _______ , KC_AMPR , KC_ASTR , KC_MINS , KC_PLUS , KC_PIPE ,
+    _______ , KC_PLUS , KC_EQL  , KC_LPRN , KC_RPRN , KC_UNDS , KC_MINS , KC_LCBR , KC_RCBR , KC_LBRC , KC_RBRC , KC_GRV  ,
+    _______ , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_PERC , KC_CIRC , KC_AMPR , KC_ASTR , _______ , _______ , KC_PIPE ,
     _______ , _______ , _______ , _______ , _______ , _______           , _______ , _______ , _______ , _______ , _______
 ),
 [_FNCTN] = LAYOUT_planck_mit(

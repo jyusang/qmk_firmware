@@ -1,61 +1,80 @@
 #include QMK_KEYBOARD_H
 
-enum layers {
-  _QWERTY,
-  _COLEMAK,
-  _DVORAK,
-  _SYMBOL,
-  _FNCTN,
-  _ADJUST,
-};
+#define LAYOUT_miryoku(\
+K00,   K01,   K02,   K03,   K04,                   K05,   K06,   K07,   K08,   K09,   \
+K10,   K11,   K12,   K13,   K14,                   K15,   K16,   K17,   K18,   K19,   \
+K20,   K21,   K22,   K23,   K24,                   K25,   K26,   K27,   K28,   K29,   \
+              K32,   K33,   K34,                   K35,   K36,   K37                  \
+)\
+LAYOUT_planck_mit(\
+K00,   K01,   K02,   K03,   K04,   KC_NO, KC_NO,   K05,   K06,   K07,   K08,   K09,   \
+K10,   K11,   K12,   K13,   K14,   KC_NO, KC_NO,   K15,   K16,   K17,   K18,   K19,   \
+K20,   K21,   K22,   K23,   K24,   KC_NO, KC_NO,   K25,   K26,   K27,   K28,   K29,   \
+KC_NO, KC_NO, K32,   K33,   K34,      KC_NO,       K35,   K36,   K37,   KC_NO, KC_NO  \
+)
 
-#define SYM_ENT LT(_SYMBOL, KC_ENT)
-#define FNCTN MO(_FNCTN)
-#define ADJUST MO(_ADJUST)
-
-#define SFT_ESC MT(MOD_LSFT, KC_ESC)
+#define X_NP KC_NO // key is not present
+#define X_NA KC_NO // present but not available for use
+#define X_NU KC_NO // available but not used
 
 #define QWERTY DF(_QWERTY)
 #define COLEMAK DF(_COLEMAK)
-#define DVORAK DF(_DVORAK)
+
+enum layers { _QWERTY, _COLEMAK, MBO, MEDR, NAVR, MOUR, NSSL, NSL, FUNL };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
-[_QWERTY] = LAYOUT_planck_mit(
-    KC_TAB  , KC_Q    , KC_W    , KC_E    , KC_R    , KC_T    , KC_Y    , KC_U    , KC_I    , KC_O    , KC_P    , KC_BSPC ,
-    KC_LCTL , KC_A    , KC_S    , KC_D    , KC_F    , KC_G    , KC_H    , KC_J    , KC_K    , KC_L    , KC_SCLN , KC_QUOT ,
-    FNCTN   , KC_Z    , KC_X    , KC_C    , KC_V    , KC_B    , KC_N    , KC_M    , KC_COMM , KC_DOT  , KC_SLSH , KC_BSLS ,
-    KC_LEFT , KC_DOWN , KC_LALT , KC_LGUI , SFT_ESC , KC_SPC            , SYM_ENT , KC_NO   , KC_NO   , KC_UP   , KC_RGHT
-),
-[_COLEMAK] = LAYOUT_planck_mit(
-    KC_TAB  , KC_Q    , KC_W    , KC_F    , KC_P    , KC_G    , KC_J    , KC_L    , KC_U    , KC_Y    , KC_SCLN , KC_BSPC ,
-    KC_LCTL , KC_A    , KC_R    , KC_S    , KC_T    , KC_D    , KC_H    , KC_N    , KC_E    , KC_I    , KC_O    , KC_QUOT ,
-    FNCTN   , KC_Z    , KC_X    , KC_C    , KC_V    , KC_B    , KC_K    , KC_M    , KC_COMM , KC_DOT  , KC_SLSH , KC_BSLS ,
-    KC_LEFT , KC_DOWN , KC_LALT , KC_LGUI , SFT_ESC , KC_SPC            , SYM_ENT , KC_NO   , KC_NO   , KC_UP   , KC_RGHT
-),
-[_DVORAK] = LAYOUT_planck_mit(
-    KC_TAB  , KC_QUOT , KC_COMM , KC_DOT  , KC_P    , KC_Y    , KC_F    , KC_G    , KC_C    , KC_R    , KC_L    , KC_BSPC ,
-    KC_LCTL , KC_A    , KC_O    , KC_E    , KC_U    , KC_I    , KC_D    , KC_H    , KC_T    , KC_N    , KC_S    , KC_SLSH ,
-    FNCTN   , KC_SCLN , KC_Q    , KC_J    , KC_K    , KC_X    , KC_B    , KC_M    , KC_W    , KC_V    , KC_Z    , KC_BSLS ,
-    KC_LEFT , KC_DOWN , KC_LALT , KC_LGUI , SFT_ESC , KC_SPC            , SYM_ENT , KC_NO   , KC_NO   , KC_UP   , KC_RGHT
-),
-[_SYMBOL] = LAYOUT_planck_mit(
-    KC_TILD , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , KC_DEL  ,
-    _______ , KC_PLUS , KC_EQL  , KC_LPRN , KC_RPRN , KC_UNDS , KC_MINS , KC_LCBR , KC_RCBR , KC_LBRC , KC_RBRC , KC_GRV  ,
-    _______ , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_PERC , KC_CIRC , KC_AMPR , KC_ASTR , _______ , _______ , KC_PIPE ,
-    _______ , _______ , _______ , _______ , _______ , _______           , _______ , _______ , _______ , _______ , _______
-),
-[_FNCTN] = LAYOUT_planck_mit(
-    KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   , KC_F6   , KC_F7   , KC_F8   , KC_F9   , KC_F10  , KC_F11  , KC_F12  ,
-    _______ , _______ , _______ , _______ , _______ , _______ , KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , _______ , _______ ,
-    _______ , _______ , _______ , _______ , _______ , _______ , KC_HOME , KC_PGDN , KC_PGUP , KC_END  , _______ , _______ ,
-    ADJUST  , _______ , _______ , _______ , _______ , _______           , _______ , KC_MNXT , KC_VOLD , KC_VOLU , KC_MPLY
-),
-[_ADJUST] = LAYOUT_planck_mit(
-    _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ ,
-    DEBUG   , _______ , _______ , AU_ON   , AU_OFF  , _______ , _______ , QWERTY  , COLEMAK , DVORAK  , _______ , RESET   ,
-    _______ , _______ , _______ , MU_ON   , MU_OFF  , _______ , _______ , _______ , _______ , _______ , _______ , _______ ,
-    _______ , _______ , _______ , _______ , _______ , _______           , _______ , _______ , _______ , _______ , _______
-),
-
+  [_QWERTY] = LAYOUT_miryoku(
+    KC_Q,         KC_W,         KC_E,         KC_R,         KC_T, KC_Y, KC_U,         KC_I,         KC_O,           KC_P,
+    LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G, KC_H, LSFT_T(KC_J), LCTL_T(KC_K), LALT_T(KC_L),   LGUI_T(KC_QUOT),
+    KC_Z,         ALGR_T(KC_X), KC_C,         KC_V,         KC_B, KC_N, KC_M,         KC_COMM,      ALGR_T(KC_DOT), KC_SLSH,
+    LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL)
+  ),
+  [_COLEMAK] = LAYOUT_miryoku(
+    KC_Q,         KC_W,         KC_F,         KC_P,         KC_B, KC_J, KC_L,         KC_U,         KC_Y,           KC_QUOT,
+    LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G, KC_H, LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_I),   LGUI_T(KC_O),
+    KC_Z,         ALGR_T(KC_X), KC_C,         KC_D,         KC_V, KC_K, KC_M,         KC_COMM,      ALGR_T(KC_DOT), KC_SLSH,
+    LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL)
+  ),
+  [NAVR] = LAYOUT_miryoku(
+    RESET,   X_NA,    X_NA,    X_NA,    X_NA,    KC_AGIN, KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, X_NA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_CAPS,
+    X_NA,    KC_ALGR, X_NA,    X_NA,    X_NA,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
+                      X_NA,    X_NA,    X_NA,    KC_ENT,  KC_BSPC, KC_DEL
+  ),
+  [MOUR] = LAYOUT_miryoku(
+    RESET,   X_NA,    X_NA,    X_NA,    X_NA,    X_NU,    X_NU,    X_NU,    X_NU,    X_NU,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, X_NA,    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, X_NU,
+    X_NA,    KC_ALGR, X_NA,    X_NA,    X_NA,    KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, X_NU,
+                      X_NA,    X_NA,    X_NA,    KC_BTN1, KC_BTN3, KC_BTN2
+  ),
+  [MEDR] = LAYOUT_miryoku(
+    RESET,   X_NA,    X_NA,    X_NA,    X_NA,    RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, X_NA,    KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, X_NU,
+    X_NA,    KC_ALGR, X_NA,    X_NA,    X_NA,    X_NU,    QWERTY,  COLEMAK, X_NU,    X_NU,
+                      X_NA,    X_NA,    X_NA,    KC_MSTP, KC_MPLY, KC_MUTE
+  ),
+  [MBO] = LAYOUT_miryoku(
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                      KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN3, KC_BTN2
+  ),
+  [FUNL] = LAYOUT_miryoku(
+    KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_PSCR, X_NA,    X_NA,    X_NA,    X_NA,    RESET,
+    KC_F11,  KC_F4,   KC_F5,   KC_F6,   KC_SLCK, X_NA,    KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+    KC_F10,  KC_F1,   KC_F2,   KC_F3,   KC_PAUS, X_NA,    X_NA,    X_NA,    KC_ALGR, X_NA,
+                      KC_APP,  KC_SPC,  KC_TAB,  X_NA,    X_NA,    X_NA
+  ),
+  [NSL] = LAYOUT_miryoku(
+    KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC, X_NA,    X_NA,    X_NA,    X_NA,    RESET,
+    KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  X_NA,    KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, X_NA,    X_NA,    X_NA,    KC_ALGR, X_NA,
+                      KC_DOT,  KC_0,    KC_MINS, X_NA,    X_NA,    X_NA
+  ),
+  [NSSL] = LAYOUT_miryoku(
+    KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, X_NA,    X_NA,    X_NA,    X_NA,    RESET,
+    KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, X_NA,    KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, X_NA,    X_NA,    X_NA,    KC_ALGR, X_NA,
+                      KC_LPRN, KC_RPRN, KC_UNDS, X_NA,    X_NA,    X_NA
+  )
 };

@@ -48,15 +48,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______ , _______ , _______ , _______ , _______ , _______           , _______ , _______ , _______ , _______ , _______
 ),
 [_LFNCTN] = LAYOUT_planck_mit(
-    _______ , _______ , _______ , KC_UP   , _______ , _______ , _______ , KC_BRID , KC_BRIU , _______ , _______ , _______ , 
-    _______ , _______ , KC_LEFT , KC_DOWN , KC_RGHT , _______ , KC_HOME , KC_PGDN , KC_PGUP , KC_END  , _______ , _______ ,
-    _______ , _______ , _______ , _______ , _______ , _______ , KC_MPRV , KC_VOLD , KC_VOLU , KC_MNXT , KC_MPLY , KC_MUTE ,
+    KC_ACL2 , _______ , KC_MS_U , KC_WH_U , _______ , _______ , KC_MPRV , KC_VOLD , KC_VOLU , KC_MNXT , KC_MPLY , KC_MUTE ,
+    KC_ACL1 , KC_MS_L , KC_MS_D , KC_MS_R , _______ , _______ , _______ , KC_BTN1 , KC_BTN2 , KC_BTN3 , _______ , _______ ,
+    KC_ACL0 , KC_WH_L , KC_WH_R , KC_WH_D , _______ , _______ , KC_HOME , KC_PGDN , KC_PGUP , KC_END  , KC_BRID , KC_BRIU ,
     _______ , _______ , _______ , _______ , _______ , _______           , _______ , ADJUST  , _______ , _______ , _______
 ),
 [_RFNCTN] = LAYOUT_planck_mit(
-    KC_NLCK , KC_F12  , KC_F7   , KC_F8   , KC_F9   , KC_PSCR , KC_BTN3 , KC_BTN1 , KC_MS_U , KC_BTN2 , KC_ACL2 , _______ ,
-    KC_SLCK , KC_F11  , KC_F4   , KC_F5   , KC_F6   , KC_PAUS , _______ , KC_MS_L , KC_MS_D , KC_MS_R , KC_ACL1 , _______ ,
-    KC_CLCK , KC_F10  , KC_F1   , KC_F2   , KC_F3   , KC_INS  , KC_WH_L , KC_WH_D , KC_WH_U , KC_WH_R , KC_ACL0 , _______ ,
+    KC_NLCK , KC_F12  , KC_F7   , KC_F8   , KC_F9   , KC_PSCR , _______ , _______ , _______ , KC_UP   , _______ ,  _______ ,
+    KC_SLCK , KC_F11  , KC_F4   , KC_F5   , KC_F6   , KC_PAUS , _______ , _______ , KC_LEFT , KC_DOWN , KC_RGHT ,  _______ ,
+    KC_CLCK , KC_F10  , KC_F1   , KC_F2   , KC_F3   , KC_INS  , _______ , _______ , _______ , _______ , _______ ,  _______ ,
     _______ , _______ , _______ , ADJUST  , _______ , _______           , _______ , _______ , _______ , _______ , _______
 ),
 [_ADJUST] = LAYOUT_planck_mit(

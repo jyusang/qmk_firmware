@@ -39,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             KC_LGUI , KC_LCTL , _______ , _______ , _______ , _______
     ),
     [_COMMON] = LAYOUT_gergoplex(
-        _______ , _______ , _______ , _______ , _______ , KC_MPRV , KC_VOLD , KC_VOLU , KC_MNXT , KC_MUTE ,
+        _______ , _______ , _______ , _______ , _______ , KC_MPRV , KC_VOLD , KC_VOLU , KC_MNXT , KC_MPLY ,
         _______ , _______ , _______ , _______ , _______ , KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , _______ ,
         KC_CAPS , _______ , _______ , _______ , _______ , KC_HOME , KC_PGDN , KC_PGUP , KC_END  , KC_DEL  ,
                             POINT   , FUNCT   , _______ , _______ , _______ , _______
